@@ -68,8 +68,51 @@ Os alunos devem simular a alocação dos processos na RAM usando o algoritmo **b
 
 ### 1. Alocação Inicial com Best-Fit
 
+- **Processos e tamanhos:**  
+  - P1: 20 KB  
+  - P2: 15 KB  
+  - P3: 25 KB  
+  - P4: 10 KB  
+  - P5: 18 KB  
+- **RAM disponível:** 64 KB
+
+**Alocação Best-Fit (simulação):**
+- P1 (20 KB) → [0-20]
+- P2 (15 KB) → [20-35]
+- P4 (10 KB) → [35-45]
+- P5 (18 KB) → [45-63] (sobra 1 KB livre)
+- P3 (25 KB) → Não cabe na RAM
+
+**Resumo:**  
+P1, P2, P4 e P5 alocados na RAM. P3 fica fora.
+
+
 ### 2. Simular Memória Virtual (Paginação)
+
+| Processo | RAM (KB) | Disco (KB) |
+|----------|----------|------------|
+| P1       | 20       | 0          |
+| P2       | 15       | 0          |
+| P3       | 0        | 25         |
+| P4       | 10       | 0          |
+| P5       | 18       | 0          |
+
+---
 
 ### 3. Desfragmentação da RAM
 
+Após desfragmentação, a RAM fica contígua, liberando 1 KB no final.  
+Ainda não é possível alocar P3 (25 KB), pois não há espaço suficiente.
+
+---
+
  ### 4. Questões para Reflexão
+
+**Best-fit foi mais eficiente que first-fit ou worst-fit neste cenário?**  
+Sim, pois minimizou fragmentação interna, permitindo alocar mais processos na RAM.
+
+**Como a memória virtual evitou um deadlock?**  
+Permitiu que processos excedentes fossem paginados para o disco, evitando bloqueio por falta de memória física.
+
+**Qual o impacto da desfragmentação no desempenho do sistema?**  
+Desfragmentação melhora o uso da RAM, reduz fragmentação e pode permitir alocação de novos processos, mas pode causar overhead temporário durante o processo.
